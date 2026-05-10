@@ -4,105 +4,365 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="PDF Manager — offline PDF toolkit for Android: merge, split, scan, compress, and more. Pro adds AI assistant, OCR, and converter." />
+  <meta name="theme-color" content="#0a0e14" />
+  <meta property="og:title" content="PDF Manager — Offline PDF tools for Android" />
+  <meta property="og:description" content="Merge, split, scan, compress, and more on your device. Pro unlocks AI, OCR, and converter. No account required." />
+  <meta property="og:type" content="website" />
   <title>PDF Manager — Offline PDF toolkit for Android</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0c1117;
-      --surface: #151b24;
-      --border: #243044;
-      --text: #e8edf5;
-      --muted: #8b9bb5;
-      --accent: #3d8bfd;
-      --accent-soft: rgba(61, 139, 253, 0.15);
+      --bg: #0a0e14;
+      --bg-elevated: #111822;
+      --surface: #151c28;
+      --border: #2a3548;
+      --text: #f0f4fa;
+      --muted: #94a3b8;
+      --brand: #e53935;
+      --brand-hover: #ff5f5c;
+      --brand-muted: rgba(229, 57, 53, 0.18);
+      --glow: rgba(229, 57, 53, 0.12);
+      --play-green: #3ddc84;
+      --font: "Outfit", ui-sans-serif, system-ui, sans-serif;
+      --radius: 14px;
+      --nav-h: 64px;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: var(--font);
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.55;
+      font-size: 1rem;
     }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
-    header {
-      text-align: center;
-      padding: 2rem 0 1rem;
+    .skip {
+      position: absolute;
+      left: -9999px;
+      top: 0.75rem;
+      z-index: 200;
+      padding: 0.5rem 1rem;
+      background: var(--brand);
+      color: #fff;
+      border-radius: 8px;
     }
-    header h1 {
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
+    .skip:focus {
+      left: 0.75rem;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    a:hover { text-decoration: none; }
+
+    /* Top bar */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0 1.25rem;
+      background: rgba(10, 14, 20, 0.82);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      margin: 0 0 0.5rem;
-    }
-    header p.tagline {
-      color: var(--muted);
       font-size: 1.05rem;
-      max-width: 36rem;
-      margin: 0 auto;
+      letter-spacing: -0.02em;
+      color: var(--text);
     }
-    .hero-img {
-      display: block;
+    .nav-brand .mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(145deg, var(--brand), #b71c1c);
+      display: grid;
+      place-items: center;
+      font-size: 0.85rem;
+      box-shadow: 0 4px 20px var(--glow);
+    }
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: clamp(0.75rem, 2vw, 1.75rem);
+      font-size: clamp(0.78rem, 1.5vw, 0.9rem);
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .nav-links a:hover {
+      color: var(--text);
+    }
+    @media (min-width: 560px) {
+      .nav-links { display: flex; }
+    }
+    .nav-cta {
+      flex-shrink: 0;
+    }
+
+    /* Buttons */
+    .btn-play {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.55rem 1rem 0.55rem 0.65rem;
+      border-radius: 12px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      color: #fff;
+      font-size: 0.8rem;
+      line-height: 1.15;
+      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    }
+    .btn-play:hover {
+      background: #252525;
+      border-color: #444;
+      transform: translateY(-1px);
+    }
+    .btn-play svg {
+      flex-shrink: 0;
+    }
+    .btn-play .play-label {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+    .btn-play .play-label small {
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #aaa;
+    }
+    .btn-play .play-label strong {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      background: transparent;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+    }
+    .btn-ghost:hover {
+      color: var(--text);
+      border-color: var(--muted);
+      background: var(--surface);
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      background: linear-gradient(165deg, var(--brand-hover), var(--brand));
+      color: #fff;
+      border: none;
+      box-shadow: 0 8px 32px var(--glow);
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+    .btn-primary:hover {
+      filter: brightness(1.06);
+      transform: translateY(-2px);
+    }
+    .btn-primary svg {
+      flex-shrink: 0;
+    }
+
+    /* Layout */
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 2.5rem 0 3.5rem;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -40% 20% auto -20%;
+      height: 70%;
+      background: radial-gradient(ellipse at center, var(--glow), transparent 55%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative;
+      display: grid;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    @media (min-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr 1.05fr;
+        gap: 3rem;
+        padding-top: 1rem;
+      }
+    }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--brand-hover);
+      margin-bottom: 0.85rem;
+    }
+    .hero-kicker span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--play-green);
+      box-shadow: 0 0 10px var(--play-green);
+    }
+    .hero h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2rem, 4.5vw, 2.85rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--muted);
+    }
+    .hero-lead {
+      margin: 0 0 1.5rem;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 32rem;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .pill {
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .hero-visual {
+      position: relative;
+    }
+    .hero-visual img {
       width: auto;
       max-width: 100%;
       height: auto;
       object-fit: contain;
-      margin: 2rem auto 0;
-      border-radius: 12px;
+      display: block;
+      margin: 0 auto;
+      border-radius: var(--radius);
       border: 1px solid var(--border);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
     }
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: center;
-      margin-top: 1.75rem;
+
+    /* Sections */
+    section {
+      padding: 3rem 0;
     }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.65rem 1.25rem;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
+    section:nth-of-type(even) {
+      background: var(--bg-elevated);
     }
-    .btn:hover { filter: brightness(1.08); text-decoration: none; }
-    .btn-secondary {
-      background: var(--surface);
-      color: var(--text);
-      border: 1px solid var(--border);
+    .section-head {
+      max-width: 36rem;
+      margin-bottom: 2rem;
     }
-    .btn-secondary:hover { background: #1a2230; }
-    section { margin-top: 3rem; }
-    section h2 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin: 0 0 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border);
+    .section-head h2 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
-    .grid {
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .features {
       display: grid;
       gap: 1rem;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 560px) {
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 960px) {
+      .features {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+      transition: border-color 0.15s ease;
+    }
+    .card:hover {
+      border-color: #3d4a63;
+    }
+    .card-icon {
+      width: 40px;
+      height: 40px;
       border-radius: 10px;
-      padding: 1rem 1.1rem;
+      display: grid;
+      place-items: center;
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
     }
     .card h3 {
-      margin: 0 0 0.35rem;
-      font-size: 1rem;
+      margin: 0 0 0.4rem;
+      font-size: 1.02rem;
       font-weight: 600;
     }
     .card p {
@@ -112,41 +372,57 @@
     }
     .badge {
       display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
+      font-size: 0.65rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       padding: 0.2rem 0.45rem;
-      border-radius: 4px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      margin-bottom: 0.35rem;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #7c4dff, #5c6bc0);
+      color: #fff;
+      margin-bottom: 0.5rem;
     }
+
+    .note {
+      margin-top: 1.25rem;
+      padding: 1rem 1.15rem;
+      border-radius: var(--radius);
+      background: var(--brand-muted);
+      border: 1px solid rgba(229, 57, 53, 0.25);
+      font-size: 0.9rem;
+      color: #e2e8f0;
+    }
+    .note strong {
+      color: #fff;
+    }
+
+    /* Gallery */
     .gallery {
       display: grid;
       gap: 1.25rem;
       grid-template-columns: 1fr;
     }
     @media (min-width: 640px) {
-      .gallery { grid-template-columns: repeat(2, 1fr); }
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
     figure {
       margin: 0;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: var(--radius);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    /* Keep phone screenshots at native aspect ratio (no stretch). */
     figure .shot {
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #080b10;
+      background: #06080c;
       line-height: 0;
     }
     figure .shot img {
@@ -161,141 +437,296 @@
     figcaption {
       align-self: stretch;
       width: 100%;
-      padding: 0.65rem 0.85rem;
+      padding: 0.7rem 0.9rem;
       font-size: 0.85rem;
       color: var(--muted);
       border-top: 1px solid var(--border);
     }
-    .why {
+
+    .why-grid {
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 640px) {
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .why-item {
+      display: flex;
+      gap: 0.85rem;
+      padding: 1.1rem 1.2rem;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius);
     }
-    .why ul {
+    .why-item .check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(61, 220, 132, 0.15);
+      color: var(--play-green);
+      display: grid;
+      place-items: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .why-item p {
       margin: 0;
-      padding-left: 1.2rem;
+      font-size: 0.92rem;
       color: var(--muted);
     }
-    .why li { margin: 0.35rem 0; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1.5rem;
+    .why-item strong {
+      display: block;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    /* CTA strip */
+    .cta-strip {
+      text-align: center;
+      padding: 3rem 1.25rem;
+      margin: 0;
+      background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
       border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .cta-strip h2 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.4rem, 3vw, 1.75rem);
+      font-weight: 700;
+    }
+    .cta-strip p {
+      margin: 0 0 1.25rem;
+      color: var(--muted);
+      max-width: 28rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    footer {
+      padding: 2rem 1.25rem 2.5rem;
       text-align: center;
       font-size: 0.85rem;
       color: var(--muted);
     }
+    footer .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    footer a.underline {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    footer a.underline:hover {
+      color: var(--text);
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>PDF Manager</h1>
-      <p class="tagline">Your all-in-one offline PDF toolkit for Android — merge, split, scan, compress, protect, convert pages, add watermarks, turn images into PDFs, and more. No account required.</p>
-      <div class="cta-row">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.pdfmergerapp" rel="noopener noreferrer">Get it on Google Play</a>
-        <a class="btn btn-secondary" href="app-ads.txt">app-ads.txt</a>
-      </div>
-      <img
-        class="hero-img"
-        src="images/feature_graphic_en-US.png"
-        width="1024"
-        height="500"
-        alt="PDF Manager — merge, split, scan, compress, and AI tools"
-      />
-    </header>
+  <a class="skip" href="#main">Skip to content</a>
 
-    <section aria-labelledby="features-heading">
-      <h2 id="features-heading">What you can do</h2>
-      <div class="grid">
-        <div class="card">
-          <span class="badge">Pro</span>
-          <h3>AI PDF Assistant</h3>
-          <p>Ask questions about your documents, get on-device summaries, and extract key information with one tap.</p>
+  <!-- Google Play — single URL for maintenance -->
+  <!-- PLAY: https://play.google.com/store/apps/details?id=com.pdfmergerapp -->
+
+  <header class="nav" role="banner">
+    <a class="nav-brand" href="#top" aria-label="PDF Manager home">
+      <span class="mark" aria-hidden="true">PDF</span>
+      <span>PDF Manager</span>
+    </a>
+    <nav class="nav-links" aria-label="Page sections">
+      <a href="#features">Features</a>
+      <a href="#screenshots">Screenshots</a>
+      <a href="#why">Why us</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn-play" href="https://play.google.com/store/apps/details?id=com.pdfmergerapp" rel="noopener noreferrer" target="_blank">
+        <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#00DC82" d="M9 7v10l8-5-8-5z"/>
+        </svg>
+        <span class="play-label">
+          <small>Get it on</small>
+          <strong>Google Play</strong>
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+    <div id="top" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="hero-kicker"><span aria-hidden="true"></span> Android · Offline-first</p>
+          <h1>PDF tools that stay <em>on your phone.</em></h1>
+          <p class="hero-lead">Merge, split, scan, compress, protect, and more — without uploading your files to the cloud. Pro adds an on-device AI assistant, OCR, and full converter.</p>
+          <div class="hero-actions" id="download">
+            <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.pdfmergerapp" rel="noopener noreferrer" target="_blank">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg>
+              Download for Android
+            </a>
+            <a class="btn-ghost" href="#screenshots">See the app</a>
+          </div>
+          <div class="pills" role="list">
+            <span class="pill" role="listitem">No account required</span>
+            <span class="pill" role="listitem">Core tools free</span>
+            <span class="pill" role="listitem">6 languages</span>
+          </div>
         </div>
-        <div class="card">
-          <h3>Merge &amp; split</h3>
-          <p>Combine PDFs with drag-and-drop order and preview. Extract pages or ranges into new files.</p>
-        </div>
-        <div class="card">
-          <h3>Scanner &amp; image to PDF</h3>
-          <p>Scan with edge detection and perspective correction. Build PDFs from multiple photos with reordering.</p>
-        </div>
-        <div class="card">
-          <h3>Compress &amp; protect</h3>
-          <p>Shrink files for email. Add 128-bit password encryption for sensitive documents.</p>
-        </div>
-        <div class="card">
-          <span class="badge">Pro</span>
-          <h3>OCR</h3>
-          <p>Turn scans into searchable PDFs — processed on your device for privacy.</p>
-        </div>
-        <div class="card">
-          <span class="badge">Pro</span>
-          <h3>PDF converter</h3>
-          <p>Export to Word (DOCX) or images (PNG/JPG) as part of the Pro tier.</p>
-        </div>
-        <div class="card">
-          <h3>Rotate &amp; watermark</h3>
-          <p>Rotate pages in 90° steps. Add customizable text watermarks.</p>
+        <div class="hero-visual">
+          <img
+            src="images/feature_graphic_en-US.png"
+            width="1024"
+            height="500"
+            alt="PDF Manager: merge, split, scan, compress, and AI tools in one app"
+          />
         </div>
       </div>
-      <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted);">Most core tools are free offline. <strong style="color:var(--text);">Pro</strong> unlocks AI, OCR, unlimited use, an ad-free experience, the full converter, and priority processing. A separate one-time purchase can remove ads only.</p>
+    </div>
+
+    <section id="features" aria-labelledby="features-heading">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="features-heading">Everything in one workspace</h2>
+          <p>Built for students, professionals, and anyone who lives in PDFs — fast actions, clear UI, dark mode.</p>
+        </div>
+        <div class="features">
+          <article class="card">
+            <span class="badge">Pro</span>
+            <div class="card-icon" aria-hidden="true">✨</div>
+            <h3>AI PDF Assistant</h3>
+            <p>Ask questions, summarize, and pull key facts from your documents — designed to run on-device with Pro.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📑</div>
+            <h3>Merge &amp; split</h3>
+            <p>Combine files with reorder and preview. Extract pages or ranges into new PDFs in seconds.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📷</div>
+            <h3>Scanner &amp; image to PDF</h3>
+            <p>Camera scanning with edge detection, plus multi-photo PDFs with drag-to-reorder.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📦</div>
+            <h3>Compress &amp; protect</h3>
+            <p>Smaller files for email and messaging. Optional 128-bit password protection.</p>
+          </article>
+          <article class="card">
+            <span class="badge">Pro</span>
+            <div class="card-icon" aria-hidden="true">🔤</div>
+            <h3>OCR</h3>
+            <p>Make scans searchable as PDFs — processing stays local for privacy.</p>
+          </article>
+          <article class="card">
+            <span class="badge">Pro</span>
+            <div class="card-icon" aria-hidden="true">📄</div>
+            <h3>Converter</h3>
+            <p>PDF to Word (DOCX) and to images (PNG/JPG) as part of the Pro tier.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">↻</div>
+            <h3>Rotate &amp; watermark</h3>
+            <p>Fine-tune pages and add text watermarks before you share.</p>
+          </article>
+        </div>
+        <p class="note">Most core tools are <strong>free</strong> and work offline. <strong>Pro</strong> unlocks AI, OCR, unlimited use, no ads, the converter, and priority processing. A one-time purchase can remove ads only (AI and OCR still need Pro).</p>
+      </div>
     </section>
 
-    <section aria-labelledby="gallery-heading">
-      <h2 id="gallery-heading">Screenshots</h2>
-      <div class="gallery">
-        <figure>
-          <div class="shot">
-            <img src="images/01_showcase.png" alt="App showcase highlighting PDF tools" width="1080" height="2400" loading="lazy" decoding="async" />
-          </div>
-          <figcaption>Tools overview — everything in one place.</figcaption>
-        </figure>
-        <figure>
-          <div class="shot">
-            <img src="images/02_home.png" alt="PDF Manager home screen" width="1080" height="2400" loading="lazy" decoding="async" />
-          </div>
-          <figcaption>Home — quick access to your workflows.</figcaption>
-        </figure>
-        <figure>
-          <div class="shot">
-            <img src="images/03_upload.png" alt="Selecting files to merge or process" width="1080" height="2400" loading="lazy" decoding="async" />
-          </div>
-          <figcaption>Pick files and arrange them the way you want.</figcaption>
-        </figure>
-        <figure>
-          <div class="shot">
-            <img src="images/04_file_list.png" alt="File list in the app" width="1080" height="2400" loading="lazy" decoding="async" />
-          </div>
-          <figcaption>Manage your documents in a clear list.</figcaption>
-        </figure>
-        <figure>
-          <div class="shot">
-            <img src="images/05_merged_result.png" alt="Merged PDF result screen" width="1080" height="2400" loading="lazy" decoding="async" />
-          </div>
-          <figcaption>Finish and share — merged output ready to go.</figcaption>
-        </figure>
+    <section id="screenshots" aria-labelledby="gallery-heading">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="gallery-heading">Screenshots</h2>
+          <p>A quick look at the flows you will use every day.</p>
+        </div>
+        <div class="gallery">
+          <figure>
+            <div class="shot">
+              <img src="images/01_showcase.png" alt="App showcase highlighting PDF tools" width="1080" height="2400" loading="lazy" decoding="async" />
+            </div>
+            <figcaption>Tools overview — everything in one place.</figcaption>
+          </figure>
+          <figure>
+            <div class="shot">
+              <img src="images/02_home.png" alt="PDF Manager home screen" width="1080" height="2400" loading="lazy" decoding="async" />
+            </div>
+            <figcaption>Home — quick access to your workflows.</figcaption>
+          </figure>
+          <figure>
+            <div class="shot">
+              <img src="images/03_upload.png" alt="Selecting files to merge or process" width="1080" height="2400" loading="lazy" decoding="async" />
+            </div>
+            <figcaption>Pick files and arrange them the way you want.</figcaption>
+          </figure>
+          <figure>
+            <div class="shot">
+              <img src="images/04_file_list.png" alt="File list in the app" width="1080" height="2400" loading="lazy" decoding="async" />
+            </div>
+            <figcaption>Manage your documents in a clear list.</figcaption>
+          </figure>
+          <figure>
+            <div class="shot">
+              <img src="images/05_merged_result.png" alt="Merged PDF result screen" width="1080" height="2400" loading="lazy" decoding="async" />
+            </div>
+            <figcaption>Finish and share — merged output ready to go.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
-    <section aria-labelledby="why-heading">
-      <h2 id="why-heading">Why PDF Manager</h2>
-      <div class="why">
-        <ul>
-          <li><strong style="color:var(--text);">Offline-first</strong> — processing stays on your device; no forced cloud upload for tools.</li>
-          <li><strong style="color:var(--text);">Privacy</strong> — no signup required to use core features.</li>
-          <li><strong style="color:var(--text);">Fast</strong> — handle everyday PDF tasks in seconds.</li>
-          <li><strong style="color:var(--text);">Polished UI</strong> — modern layout with dark mode.</li>
-          <li><strong style="color:var(--text);">Multilingual</strong> — including English, Turkish, German, French, Spanish, and Arabic.</li>
-        </ul>
+    <section id="why" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="why-heading">Why PDF Manager</h2>
+          <p>Designed for real files and real deadlines — not another bloated editor.</p>
+        </div>
+        <div class="why-grid">
+          <div class="why-item">
+            <span class="check" aria-hidden="true">✓</span>
+            <p><strong>Offline-first</strong> Your PDFs are processed on-device. No forced cloud upload for core tools.</p>
+          </div>
+          <div class="why-item">
+            <span class="check" aria-hidden="true">✓</span>
+            <p><strong>Privacy</strong> No signup wall — open the app and get to work.</p>
+          </div>
+          <div class="why-item">
+            <span class="check" aria-hidden="true">✓</span>
+            <p><strong>Speed</strong> Merge, compress, and share in a few taps.</p>
+          </div>
+          <div class="why-item">
+            <span class="check" aria-hidden="true">✓</span>
+            <p><strong>Multilingual</strong> English, Turkish, German, French, Spanish, Arabic, and more.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <footer>
-      <p>PDF Manager for Android · <a href="https://play.google.com/store/apps/details?id=com.pdfmergerapp">Google Play</a></p>
-    </footer>
-  </div>
+    <aside class="cta-strip" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">Get PDF Manager on Android</h2>
+      <p>Install from Google Play — updates and reviews live there.</p>
+      <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.pdfmergerapp" rel="noopener noreferrer" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg>
+        Open in Google Play
+      </a>
+    </aside>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="row">
+        <span>© 2026 PDF Manager</span>
+        <a class="underline" href="https://play.google.com/store/apps/details?id=com.pdfmergerapp" rel="noopener noreferrer" target="_blank">Google Play listing</a>
+        <a class="underline" href="app-ads.txt">app-ads.txt</a>
+      </div>
+      <p>Android is a trademark of Google LLC. Google Play and the Google Play logo are trademarks of Google LLC.</p>
+    </div>
+  </footer>
 </body>
 </html>
