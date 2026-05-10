@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="PDF Manager — offline PDF toolkit for Android: merge, split, scan, compress, and more. Pro adds AI assistant, OCR, and converter." />
+  <title>PDF Manager — Offline PDF toolkit for Android</title>
+  <style>
+    :root {
+      --bg: #0c1117;
+      --surface: #151b24;
+      --border: #243044;
+      --text: #e8edf5;
+      --muted: #8b9bb5;
+      --accent: #3d8bfd;
+      --accent-soft: rgba(61, 139, 253, 0.15);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+    header {
+      text-align: center;
+      padding: 2rem 0 1rem;
+    }
+    header h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.5rem;
+    }
+    header p.tagline {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+    .hero-img {
+      display: block;
+      width: 100%;
+      max-width: 1024px;
+      margin: 2rem auto 0;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-top: 1.75rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover { filter: brightness(1.08); text-decoration: none; }
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { background: #1a2230; }
+    section { margin-top: 3rem; }
+    section h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+    }
+    .card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.45rem;
+      border-radius: 4px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+    .gallery {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+    }
+    figure {
+      margin: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    figure img {
+      width: 100%;
+      vertical-align: middle;
+      display: block;
+    }
+    figcaption {
+      padding: 0.65rem 0.85rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    .why {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+    }
+    .why ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+    .why li { margin: 0.35rem 0; }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>PDF Manager</h1>
+      <p class="tagline">Your all-in-one offline PDF toolkit for Android — merge, split, scan, compress, protect, convert pages, add watermarks, turn images into PDFs, and more. No account required.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.pdfmergerapp" rel="noopener noreferrer">Get it on Google Play</a>
+        <a class="btn btn-secondary" href="app-ads.txt">app-ads.txt</a>
+      </div>
+      <img
+        class="hero-img"
+        src="images/feature_graphic_en-US.png"
+        width="1024"
+        height="500"
+        alt="PDF Manager — merge, split, scan, compress, and AI tools"
+      />
+    </header>
+
+    <section aria-labelledby="features-heading">
+      <h2 id="features-heading">What you can do</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="badge">Pro</span>
+          <h3>AI PDF Assistant</h3>
+          <p>Ask questions about your documents, get on-device summaries, and extract key information with one tap.</p>
+        </div>
+        <div class="card">
+          <h3>Merge &amp; split</h3>
+          <p>Combine PDFs with drag-and-drop order and preview. Extract pages or ranges into new files.</p>
+        </div>
+        <div class="card">
+          <h3>Scanner &amp; image to PDF</h3>
+          <p>Scan with edge detection and perspective correction. Build PDFs from multiple photos with reordering.</p>
+        </div>
+        <div class="card">
+          <h3>Compress &amp; protect</h3>
+          <p>Shrink files for email. Add 128-bit password encryption for sensitive documents.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Pro</span>
+          <h3>OCR</h3>
+          <p>Turn scans into searchable PDFs — processed on your device for privacy.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Pro</span>
+          <h3>PDF converter</h3>
+          <p>Export to Word (DOCX) or images (PNG/JPG) as part of the Pro tier.</p>
+        </div>
+        <div class="card">
+          <h3>Rotate &amp; watermark</h3>
+          <p>Rotate pages in 90° steps. Add customizable text watermarks.</p>
+        </div>
+      </div>
+      <p style="margin-top:1rem;font-size:0.9rem;color:var(--muted);">Most core tools are free offline. <strong style="color:var(--text);">Pro</strong> unlocks AI, OCR, unlimited use, an ad-free experience, the full converter, and priority processing. A separate one-time purchase can remove ads only.</p>
+    </section>
+
+    <section aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading">Screenshots</h2>
+      <div class="gallery">
+        <figure>
+          <img src="images/01_showcase.png" alt="App showcase highlighting PDF tools" width="1080" height="2400" loading="lazy" />
+          <figcaption>Tools overview — everything in one place.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/02_home.png" alt="PDF Manager home screen" width="1080" height="2400" loading="lazy" />
+          <figcaption>Home — quick access to your workflows.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/03_upload.png" alt="Selecting files to merge or process" width="1080" height="2400" loading="lazy" />
+          <figcaption>Pick files and arrange them the way you want.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/04_file_list.png" alt="File list in the app" width="1080" height="2400" loading="lazy" />
+          <figcaption>Manage your documents in a clear list.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/05_merged_result.png" alt="Merged PDF result screen" width="1080" height="2400" loading="lazy" />
+          <figcaption>Finish and share — merged output ready to go.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="why-heading">
+      <h2 id="why-heading">Why PDF Manager</h2>
+      <div class="why">
+        <ul>
+          <li><strong style="color:var(--text);">Offline-first</strong> — processing stays on your device; no forced cloud upload for tools.</li>
+          <li><strong style="color:var(--text);">Privacy</strong> — no signup required to use core features.</li>
+          <li><strong style="color:var(--text);">Fast</strong> — handle everyday PDF tasks in seconds.</li>
+          <li><strong style="color:var(--text);">Polished UI</strong> — modern layout with dark mode.</li>
+          <li><strong style="color:var(--text);">Multilingual</strong> — including English, Turkish, German, French, Spanish, and Arabic.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <p>PDF Manager for Android · <a href="https://play.google.com/store/apps/details?id=com.pdfmergerapp">Google Play</a></p>
+    </footer>
+  </div>
+</body>
+</html>
