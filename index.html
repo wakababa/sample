@@ -3,11 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="PDF Manager — offline PDF toolkit for Android: merge, split, scan, compress, and more. Pro adds AI assistant, OCR, and converter." />
+  <meta id="meta-desc" name="description" content="PDF Manager — offline PDF toolkit for Android: merge, split, scan, compress, and more. Pro adds AI assistant, OCR, and converter." />
   <meta name="theme-color" content="#0a0e14" />
-  <meta property="og:title" content="PDF Manager — Offline PDF tools for Android" />
-  <meta property="og:description" content="Merge, split, scan, compress, and more on your device. Pro unlocks AI, OCR, and converter. No account required." />
+  <meta id="meta-og-title" property="og:title" content="PDF Manager — Offline PDF tools for Android" />
+  <meta id="meta-og-desc" property="og:description" content="Merge, split, scan, compress, and more on your device. Pro unlocks AI, OCR, and converter. No account required." />
   <meta property="og:type" content="website" />
+  <!-- For Facebook/LinkedIn etc., og:image should be an absolute HTTPS URL once your domain is live. Relative path works for some crawlers when the page URL is known. -->
+  <meta id="meta-og-image" property="og:image" content="images/01_showcase.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta id="meta-tw-image" name="twitter:image" content="images/01_showcase.png" />
+  <meta id="meta-tw-title" name="twitter:title" content="PDF Manager — Offline PDF tools for Android" />
+  <meta id="meta-tw-desc" name="twitter:description" content="Merge, split, scan, compress, and more on your device. Pro unlocks AI, OCR, and converter. No account required." />
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
   <title>PDF Manager — Offline PDF toolkit for Android</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -56,6 +63,17 @@
     }
     .skip:focus {
       left: 0.75rem;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
     a {
       color: inherit;
@@ -113,6 +131,36 @@
     }
     .nav-cta {
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .lang-wrap {
+      flex-shrink: 0;
+    }
+    .lang-select {
+      appearance: none;
+      font-family: var(--font);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.45rem 1.85rem 0.45rem 0.55rem;
+      cursor: pointer;
+      line-height: 1.2;
+      max-width: 9.5rem;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394a3b8' d='M3 4.5 6 8l3-3.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.45rem center;
+    }
+    .lang-select:hover {
+      border-color: var(--muted);
+    }
+    .lang-select:focus {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
     }
 
     /* Buttons */
@@ -323,6 +371,13 @@
       color: var(--muted);
       font-size: 1rem;
     }
+    #features .section-head {
+      max-width: 48rem;
+    }
+    #features .section-head p {
+      font-size: 1.02rem;
+      line-height: 1.6;
+    }
 
     .features {
       display: grid;
@@ -370,6 +425,34 @@
       color: var(--muted);
       font-size: 0.9rem;
     }
+    .card-lead {
+      margin: 0 0 0.65rem;
+      color: var(--text);
+      font-size: 0.92rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .card-detail {
+      margin: 0;
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .card-detail ul {
+      margin: 0;
+      padding-left: 1.15rem;
+    }
+    .card-detail li {
+      margin-bottom: 0.4rem;
+    }
+    .card-detail li:last-child {
+      margin-bottom: 0;
+    }
+    /* Test: set AI_PRO_DISABLED_FOR_TEST = false in the page script to show the AI Pro card again */
+    html.ai-pro-test-disabled #feature-card-ai-pro {
+      display: none !important;
+    }
+
     .badge {
       display: inline-block;
       font-size: 0.65rem;
@@ -531,29 +614,33 @@
   </style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
   <!-- Google Play — single URL for maintenance -->
   <!-- PLAY: https://play.google.com/store/apps/details?id=com.pdfmergerapp -->
 
   <header class="nav" role="banner">
-    <a class="nav-brand" href="#top" aria-label="PDF Manager home">
+    <a class="nav-brand" href="#top" data-i18n-aria="nav_home_aria">
       <span class="mark" aria-hidden="true">PDF</span>
       <span>PDF Manager</span>
     </a>
-    <nav class="nav-links" aria-label="Page sections">
-      <a href="#features">Features</a>
-      <a href="#screenshots">Screenshots</a>
-      <a href="#why">Why us</a>
+    <nav class="nav-links" data-i18n-aria="nav_sections_aria" aria-label="Page sections">
+      <a href="#features" data-i18n="nav_features">Features</a>
+      <a href="#screenshots" data-i18n="nav_screenshots">Screenshots</a>
+      <a href="#why" data-i18n="nav_why">Why us</a>
     </nav>
     <div class="nav-cta">
+      <div class="lang-wrap">
+        <label for="lang-select" class="sr-only" data-i18n="lang_label">Language</label>
+        <select id="lang-select" class="lang-select"></select>
+      </div>
       <a class="btn-play" href="https://play.google.com/store/apps/details?id=com.pdfmergerapp" rel="noopener noreferrer" target="_blank">
         <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
           <path fill="#00DC82" d="M9 7v10l8-5-8-5z"/>
         </svg>
         <span class="play-label">
-          <small>Get it on</small>
-          <strong>Google Play</strong>
+          <small data-i18n="play_small">Get it on</small>
+          <strong data-i18n="play_strong">Google Play</strong>
         </span>
       </a>
     </div>
@@ -563,27 +650,28 @@
     <div id="top" class="hero">
       <div class="container hero-grid">
         <div>
-          <p class="hero-kicker"><span aria-hidden="true"></span> Android · Offline-first</p>
-          <h1>PDF tools that stay <em>on your phone.</em></h1>
-          <p class="hero-lead">Merge, split, scan, compress, protect, and more — without uploading your files to the cloud. Pro adds an on-device AI assistant, OCR, and full converter.</p>
+          <p class="hero-kicker"><span aria-hidden="true"></span> <span data-i18n="hero_kicker">Android · Offline-first</span></p>
+          <h1><span data-i18n="hero_h1_a">PDF tools that stay</span> <em data-i18n="hero_h1_b">on your phone.</em></h1>
+          <p class="hero-lead" data-i18n="hero_lead">Merge, split, scan, compress, protect, and more — without uploading your files to the cloud. Pro adds an on-device AI assistant, OCR, and full converter.</p>
           <div class="hero-actions" id="download">
             <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.pdfmergerapp" rel="noopener noreferrer" target="_blank">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg>
-              Download for Android
+              <span data-i18n="btn_download">Download for Android</span>
             </a>
-            <a class="btn-ghost" href="#screenshots">See the app</a>
+            <a class="btn-ghost" href="#screenshots" data-i18n="btn_see_app">See the app</a>
           </div>
           <div class="pills" role="list">
-            <span class="pill" role="listitem">No account required</span>
-            <span class="pill" role="listitem">Core tools free</span>
-            <span class="pill" role="listitem">6 languages</span>
+            <span class="pill" role="listitem" data-i18n="pill_account">No account required</span>
+            <span class="pill" role="listitem" data-i18n="pill_free">Core tools free</span>
+            <span class="pill" role="listitem" data-i18n="pill_langs">6 languages</span>
           </div>
         </div>
         <div class="hero-visual">
           <img
-            src="images/feature_graphic_en-US.png"
-            width="1024"
-            height="500"
+            src="images/01_showcase.png"
+            width="1080"
+            height="2400"
+            data-i18n-alt="hero_img_alt"
             alt="PDF Manager: merge, split, scan, compress, and AI tools in one app"
           />
         </div>
@@ -593,89 +681,72 @@
     <section id="features" aria-labelledby="features-heading">
       <div class="container">
         <div class="section-head">
-          <h2 id="features-heading">Everything in one workspace</h2>
-          <p>Built for students, professionals, and anyone who lives in PDFs — fast actions, clear UI, dark mode.</p>
+          <h2 id="features-heading" data-i18n="features_h2">Everything in one workspace</h2>
+          <p data-i18n="features_p">Built for students, professionals, and anyone who lives in PDFs — fast actions, clear UI, dark mode.</p>
         </div>
         <div class="features">
           <article class="card">
             <span class="badge">Pro</span>
             <div class="card-icon" aria-hidden="true">✨</div>
-            <h3>AI PDF Assistant</h3>
-            <p>Ask questions, summarize, and pull key facts from your documents — designed to run on-device with Pro.</p>
+            <h3 data-i18n="feat_ai_h3">AI PDF Assistant</h3>
+            <p class="card-lead" data-i18n="feat_ai_lead">Turn contracts, lecture notes, and manuals into answers you can use — without sending files off your phone.</p>
+            <div class="card-detail" data-i18n-html="feat_ai_detail_html"><ul><li>Chat with a loaded PDF: questions, summaries, and key takeaways tuned for real documents.</li><li>On-device processing with Pro when confidentiality matters (work, school, sensitive drafts).</li><li>Finish with export or share options that fit how you already deliver work.</li></ul></div>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">📑</div>
-            <h3>Merge &amp; split</h3>
-            <p>Combine files with reorder and preview. Extract pages or ranges into new PDFs in seconds.</p>
+            <h3 data-i18n="feat_merge_h3">Merge &amp; split</h3>
+            <p class="card-lead" data-i18n="feat_merge_lead">Combine invoices, chapters, or attachments into one polished file — or extract only the pages people actually need.</p>
+            <div class="card-detail" data-i18n-html="feat_merge_detail_html"><ul><li>Drag to reorder PDFs and pages before merging; preview so nothing ships by surprise.</li><li>Split by single pages, ranges, or multiple outputs for email limits and version control.</li><li>Ideal for coursework packets, onboarding packs, and client-ready bundles.</li></ul></div>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">📷</div>
-            <h3>Scanner &amp; image to PDF</h3>
-            <p>Camera scanning with edge detection, plus multi-photo PDFs with drag-to-reorder.</p>
+            <h3 data-i18n="feat_scan_h3">Scanner &amp; image to PDF</h3>
+            <p class="card-lead" data-i18n="feat_scan_lead">Paper in your pocket becomes clean, shareable PDFs with automatic detection and quick cleanup.</p>
+            <div class="card-detail" data-i18n-html="feat_scan_detail_html"><ul><li>Camera capture with perspective and edge cleanup for readable scans.</li><li>Multi-photo flows for handouts, receipts, or whiteboards — reorder before you export.</li><li>Turn existing JPG/PNG sets into one archival-quality PDF.</li></ul></div>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">📦</div>
-            <h3>Compress &amp; protect</h3>
-            <p>Smaller files for email and messaging. Optional 128-bit password protection.</p>
+            <h3 data-i18n="feat_compress_h3">Compress &amp; protect</h3>
+            <p class="card-lead" data-i18n="feat_compress_lead">Meet mailbox limits and slow networks while keeping text sharp on the pages that matter.</p>
+            <div class="card-detail" data-i18n-html="feat_compress_detail_html"><ul><li>Shrink heavy scans and brochures for email, chat apps, and upload portals.</li><li>Optional 128-bit password lock before sharing contracts or personal records.</li><li>Compression runs on-device for faster turnaround and peace of mind.</li></ul></div>
           </article>
           <article class="card">
             <span class="badge">Pro</span>
             <div class="card-icon" aria-hidden="true">🔤</div>
-            <h3>OCR</h3>
-            <p>Make scans searchable as PDFs — processing stays local for privacy.</p>
+            <h3 data-i18n="feat_ocr_h3">OCR</h3>
+            <p class="card-lead" data-i18n="feat_ocr_lead">Make flat scans searchable and copy-friendly so you can cite, quote, and archive properly.</p>
+            <div class="card-detail" data-i18n-html="feat_ocr_detail_html"><ul><li>Text recognition tuned for mixed layouts and challenging photos when it counts.</li><li>Processing stays local — a strong fit for NDAs and private archives.</li><li>Works with your export flow once text is unlocked.</li></ul></div>
           </article>
           <article class="card">
             <span class="badge">Pro</span>
             <div class="card-icon" aria-hidden="true">📄</div>
-            <h3>Converter</h3>
-            <p>PDF to Word (DOCX) and to images (PNG/JPG) as part of the Pro tier.</p>
+            <h3 data-i18n="feat_conv_h3">Converter</h3>
+            <p class="card-lead" data-i18n="feat_conv_lead">Bridge formats when collaborators need Word or when you need crisp images for decks and social.</p>
+            <div class="card-detail" data-i18n-html="feat_conv_detail_html"><ul><li>PDF to DOCX when someone needs edits, comments, or track changes elsewhere.</li><li>PDF to PNG/JPG for slides, appendices, and creative handoffs.</li><li>Large batches stay inside your Pro tier for predictable throughput.</li></ul></div>
           </article>
           <article class="card">
             <div class="card-icon" aria-hidden="true">↻</div>
-            <h3>Rotate &amp; watermark</h3>
-            <p>Fine-tune pages and add text watermarks before you share.</p>
+            <h3 data-i18n="feat_rotate_h3">Rotate &amp; watermark</h3>
+            <p class="card-lead" data-i18n="feat_rotate_lead">Fix sideways scans and brand deliverables before they leave your device.</p>
+            <div class="card-detail" data-i18n-html="feat_rotate_detail_html"><ul><li>Rotate individual pages or whole sets right after import — no desktop required.</li><li>Add readable text watermarks (draft, confidential, client codes) for accountability.</li><li>Final polish for approvals, submissions, and internal review loops.</li></ul></div>
           </article>
         </div>
-        <p class="note">Most core tools are <strong>free</strong> and work offline. <strong>Pro</strong> unlocks AI, OCR, unlimited use, no ads, the converter, and priority processing. A one-time purchase can remove ads only (AI and OCR still need Pro).</p>
+        <p class="note" data-i18n-html="note_html">Most core tools are <strong>free</strong> and work offline. <strong>Pro</strong> unlocks AI, OCR, unlimited use, no ads, the converter, and priority processing. A one-time purchase can remove ads only (AI and OCR still need Pro).</p>
       </div>
     </section>
 
     <section id="screenshots" aria-labelledby="gallery-heading">
       <div class="container">
         <div class="section-head">
-          <h2 id="gallery-heading">Screenshots</h2>
-          <p>A quick look at the flows you will use every day.</p>
+          <h2 id="gallery-heading" data-i18n="gallery_h2">Screenshots</h2>
+          <p data-i18n="gallery_p">A quick look at the flows you will use every day.</p>
         </div>
         <div class="gallery">
           <figure>
             <div class="shot">
-              <img src="images/01_showcase.png" alt="App showcase highlighting PDF tools" width="1080" height="2400" loading="lazy" decoding="async" />
+              <img src="images/01_showcase.png" data-i18n-alt="gallery_img_alt" alt="App showcase highlighting PDF tools" width="1080" height="2400" loading="lazy" decoding="async" />
             </div>
-            <figcaption>Tools overview — everything in one place.</figcaption>
-          </figure>
-          <figure>
-            <div class="shot">
-              <img src="images/02_home.png" alt="PDF Manager home screen" width="1080" height="2400" loading="lazy" decoding="async" />
-            </div>
-            <figcaption>Home — quick access to your workflows.</figcaption>
-          </figure>
-          <figure>
-            <div class="shot">
-              <img src="images/03_upload.png" alt="Selecting files to merge or process" width="1080" height="2400" loading="lazy" decoding="async" />
-            </div>
-            <figcaption>Pick files and arrange them the way you want.</figcaption>
-          </figure>
-          <figure>
-            <div class="shot">
-              <img src="images/04_file_list.png" alt="File list in the app" width="1080" height="2400" loading="lazy" decoding="async" />
-            </div>
-            <figcaption>Manage your documents in a clear list.</figcaption>
-          </figure>
-          <figure>
-            <div class="shot">
-              <img src="images/05_merged_result.png" alt="Merged PDF result screen" width="1080" height="2400" loading="lazy" decoding="async" />
-            </div>
-            <figcaption>Finish and share — merged output ready to go.</figcaption>
+            <figcaption data-i18n="gallery_caption">Tools overview — everything in one place.</figcaption>
           </figure>
         </div>
       </div>
@@ -684,36 +755,36 @@
     <section id="why" aria-labelledby="why-heading">
       <div class="container">
         <div class="section-head">
-          <h2 id="why-heading">Why PDF Manager</h2>
-          <p>Designed for real files and real deadlines — not another bloated editor.</p>
+          <h2 id="why-heading" data-i18n="why_h2">Why PDF Manager</h2>
+          <p data-i18n="why_p">Designed for real files and real deadlines — not another bloated editor.</p>
         </div>
         <div class="why-grid">
           <div class="why-item">
             <span class="check" aria-hidden="true">✓</span>
-            <p><strong>Offline-first</strong> Your PDFs are processed on-device. No forced cloud upload for core tools.</p>
+            <p data-i18n-html="why_offline_html"><strong>Offline-first</strong> Your PDFs are processed on-device. No forced cloud upload for core tools.</p>
           </div>
           <div class="why-item">
             <span class="check" aria-hidden="true">✓</span>
-            <p><strong>Privacy</strong> No signup wall — open the app and get to work.</p>
+            <p data-i18n-html="why_privacy_html"><strong>Privacy</strong> No signup wall — open the app and get to work.</p>
           </div>
           <div class="why-item">
             <span class="check" aria-hidden="true">✓</span>
-            <p><strong>Speed</strong> Merge, compress, and share in a few taps.</p>
+            <p data-i18n-html="why_speed_html"><strong>Speed</strong> Merge, compress, and share in a few taps.</p>
           </div>
           <div class="why-item">
             <span class="check" aria-hidden="true">✓</span>
-            <p><strong>Multilingual</strong> English, Turkish, German, French, Spanish, Arabic, and more.</p>
+            <p data-i18n-html="why_lang_html"><strong>Multilingual</strong> English, Turkish, German, French, Spanish, Arabic, and more.</p>
           </div>
         </div>
       </div>
     </section>
 
     <aside class="cta-strip" aria-labelledby="cta-heading">
-      <h2 id="cta-heading">Get PDF Manager on Android</h2>
-      <p>Install from Google Play — updates and reviews live there.</p>
+      <h2 id="cta-heading" data-i18n="cta_h2">Get PDF Manager on Android</h2>
+      <p data-i18n="cta_p">Install from Google Play — updates and reviews live there.</p>
       <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.pdfmergerapp" rel="noopener noreferrer" target="_blank">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg>
-        Open in Google Play
+        <span data-i18n="cta_btn">Open in Google Play</span>
       </a>
     </aside>
   </main>
@@ -721,12 +792,512 @@
   <footer role="contentinfo">
     <div class="container">
       <div class="row">
-        <span>© 2026 PDF Manager</span>
-        <a class="underline" href="https://play.google.com/store/apps/details?id=com.pdfmergerapp" rel="noopener noreferrer" target="_blank">Google Play listing</a>
-        <a class="underline" href="app-ads.txt">app-ads.txt</a>
+        <span data-i18n="footer_copy">© 2026 PDF Manager</span>
+        <a class="underline" href="https://play.google.com/store/apps/details?id=com.pdfmergerapp" rel="noopener noreferrer" target="_blank" data-i18n="footer_play">Google Play listing</a>
+        <!-- Legal link targets: set LEGAL_PRIVACY_URL and LEGAL_TERMS_URL in the page script (search for LEGAL_). -->
+        <a id="footer-privacy-link" class="underline" href="#" rel="noopener noreferrer" target="_blank" data-i18n="footer_privacy">Privacy policy</a>
+        <a id="footer-terms-link" class="underline" href="#" rel="noopener noreferrer" target="_blank" data-i18n="footer_terms">Terms of use</a>
       </div>
-      <p>Android is a trademark of Google LLC. Google Play and the Google Play logo are trademarks of Google LLC.</p>
+      <p data-i18n="footer_legal">Android is a trademark of Google LLC. Google Play and the Google Play logo are trademarks of Google LLC.</p>
     </div>
   </footer>
+  <script>
+(function () {
+  /** Geçici test: yapay zekâ (Pro) özellik kartını gizler. Tanıtım sayfasında false bırakın. */
+  var AI_PRO_DISABLED_FOR_TEST = false;
+  if (AI_PRO_DISABLED_FOR_TEST) {
+    document.documentElement.classList.add("ai-pro-test-disabled");
+  }
+
+  var STORAGE_KEY = "pdfmgr_lang";
+  /** Replace with your real HTTPS URLs before production (Play Console or your site). */
+  var LEGAL_PRIVACY_URL = "https://www.example.com/privacy";
+  var LEGAL_TERMS_URL = "https://www.example.com/terms";
+  var LANG_ORDER = ["en", "tr", "de", "fr", "es", "ar"];
+  var STR = {
+    en: {
+      skip: "Skip to content",
+      nav_home_aria: "PDF Manager home",
+      nav_sections_aria: "Page sections",
+      nav_features: "Features",
+      nav_screenshots: "Screenshots",
+      nav_why: "Why us",
+      lang_label: "Language",
+      play_small: "Get it on",
+      play_strong: "Google Play",
+      hero_kicker: "Android · Offline-first",
+      hero_h1_a: "PDF tools that stay",
+      hero_h1_b: "on your phone.",
+      hero_lead: "Merge, split, scan, compress, protect, and more — without uploading your files to the cloud. Pro adds an on-device AI assistant, OCR, and full converter.",
+      btn_download: "Download for Android",
+      btn_see_app: "See the app",
+      pill_account: "No account required",
+      pill_free: "Core tools free",
+      pill_langs: "6 languages",
+      hero_img_alt: "PDF Manager: merge, split, scan, compress, and AI tools in one app",
+      features_h2: "A full PDF toolkit you can pitch with confidence",
+      features_p: "Whether you are running paid ads, social posts, or a simple landing page, these are the concrete benefits users feel on day one: fast offline actions, a clear workspace, dark mode, and Pro upgrades for AI, OCR, and conversion — no account wall.",
+      feat_ai_h3: "AI PDF Assistant",
+      feat_ai_lead: "Turn contracts, lecture notes, and manuals into answers you can use — without sending files off your phone.",
+      feat_ai_detail_html: "<ul><li>Chat with a loaded PDF: questions, summaries, and key takeaways tuned for real documents.</li><li>On-device processing with Pro when confidentiality matters (work, school, sensitive drafts).</li><li>Finish with export or share options that fit how you already deliver work.</li></ul>",
+      feat_merge_h3: "Merge & split",
+      feat_merge_lead: "Combine invoices, chapters, or attachments into one polished file — or extract only the pages people actually need.",
+      feat_merge_detail_html: "<ul><li>Drag to reorder PDFs and pages before merging; preview so nothing ships by surprise.</li><li>Split by single pages, ranges, or multiple outputs for email limits and version control.</li><li>Ideal for coursework packets, onboarding packs, and client-ready bundles.</li></ul>",
+      feat_scan_h3: "Scanner & image to PDF",
+      feat_scan_lead: "Paper in your pocket becomes clean, shareable PDFs with automatic detection and quick cleanup.",
+      feat_scan_detail_html: "<ul><li>Camera capture with perspective and edge cleanup for readable scans.</li><li>Multi-photo flows for handouts, receipts, or whiteboards — reorder before you export.</li><li>Turn existing JPG/PNG sets into one archival-quality PDF.</li></ul>",
+      feat_compress_h3: "Compress & protect",
+      feat_compress_lead: "Meet mailbox limits and slow networks while keeping text sharp on the pages that matter.",
+      feat_compress_detail_html: "<ul><li>Shrink heavy scans and brochures for email, chat apps, and upload portals.</li><li>Optional 128-bit password lock before sharing contracts or personal records.</li><li>Compression runs on-device for faster turnaround and peace of mind.</li></ul>",
+      feat_ocr_h3: "OCR",
+      feat_ocr_lead: "Make flat scans searchable and copy-friendly so you can cite, quote, and archive properly.",
+      feat_ocr_detail_html: "<ul><li>Text recognition tuned for mixed layouts and challenging photos when it counts.</li><li>Processing stays local — a strong fit for NDAs and private archives.</li><li>Works with your export flow once text is unlocked.</li></ul>",
+      feat_conv_h3: "Converter",
+      feat_conv_lead: "Bridge formats when collaborators need Word or when you need crisp images for decks and social.",
+      feat_conv_detail_html: "<ul><li>PDF to DOCX when someone needs edits, comments, or track changes elsewhere.</li><li>PDF to PNG/JPG for slides, appendices, and creative handoffs.</li><li>Large batches stay inside your Pro tier for predictable throughput.</li></ul>",
+      feat_rotate_h3: "Rotate & watermark",
+      feat_rotate_lead: "Fix sideways scans and brand deliverables before they leave your device.",
+      feat_rotate_detail_html: "<ul><li>Rotate individual pages or whole sets right after import — no desktop required.</li><li>Add readable text watermarks (draft, confidential, client codes) for accountability.</li><li>Final polish for approvals, submissions, and internal review loops.</li></ul>",
+      note_html: "Use this page in campaigns with a clear promise: <strong>free core tools offline</strong>, optional <strong>Pro</strong> for AI, OCR, unlimited use, no ads, the converter, and priority processing. A one-time purchase can remove ads only (AI and OCR still require Pro). Always match store listing text and local regulations for paid promotion.",
+      gallery_h2: "Screenshots",
+      gallery_p: "A quick look at the flows you will use every day.",
+      gallery_img_alt: "App showcase highlighting PDF tools",
+      gallery_caption: "Tools overview — everything in one place.",
+      why_h2: "Why PDF Manager",
+      why_p: "Designed for real files and real deadlines — not another bloated editor.",
+      why_offline_html: "<strong>Offline-first</strong> Your PDFs are processed on-device. No forced cloud upload for core tools.",
+      why_privacy_html: "<strong>Privacy</strong> No signup wall — open the app and get to work.",
+      why_speed_html: "<strong>Speed</strong> Merge, compress, and share in a few taps.",
+      why_lang_html: "<strong>Multilingual</strong> English, Turkish, German, French, Spanish, Arabic, and more.",
+      cta_h2: "Get PDF Manager on Android",
+      cta_p: "Install from Google Play — updates and reviews live there.",
+      cta_btn: "Open in Google Play",
+      footer_copy: "© 2026 PDF Manager",
+      footer_play: "Google Play listing",
+      footer_privacy: "Privacy policy",
+      footer_terms: "Terms of use",
+      footer_legal: "Android is a trademark of Google LLC. Google Play and the Google Play logo are trademarks of Google LLC.",
+      doc_title: "PDF Manager — Offline PDF toolkit for Android",
+      meta_desc: "PDF Manager for Android: merge, split, scan, compress, protect, AI (Pro), OCR (Pro), converter (Pro). Offline-first, no account — copy-ready feature story for ads.",
+      og_title: "PDF Manager — Offline PDF tools for Android",
+      og_desc: "Detailed feature breakdown: offline PDF toolkit plus Pro AI, OCR, and conversion. Built for privacy-conscious users and performance campaigns."
+    },
+    tr: {
+      skip: "İçeriğe atla",
+      nav_home_aria: "PDF Manager ana sayfa",
+      nav_sections_aria: "Sayfa bölümleri",
+      nav_features: "Özellikler",
+      nav_screenshots: "Ekran görüntüleri",
+      nav_why: "Neden biz",
+      lang_label: "Dil",
+      play_small: "İndirin",
+      play_strong: "Google Play",
+      hero_kicker: "Android · Önce çevrimdışı",
+      hero_h1_a: "PDF araçları",
+      hero_h1_b: "telefonunuzda kalır.",
+      hero_lead: "Birleştir, böl, tara, sıkıştır, koru ve daha fazlası — dosyalarınızı buluta yüklemeden. Pro, cihaz üzerinde yapay zekâ asistanı, OCR ve tam dönüştürücü ekler.",
+      btn_download: "Android için indir",
+      btn_see_app: "Uygulamayı gör",
+      pill_account: "Hesap gerekmez",
+      pill_free: "Temel araçlar ücretsiz",
+      pill_langs: "6 dil",
+      hero_img_alt: "PDF Manager: birleştir, böl, tara, sıkıştır ve yapay zekâ araçları tek uygulamada",
+      features_h2: "Reklam metnine dökülebilir, somut bir PDF seti",
+      features_p: "Ücretli reklam, sosyal gönderi veya basit bir açılış sayfası için: kullanıcı ilk günde ne kazanır? Hızlı çevrimdışı işlemler, düzenli çalışma alanı, karanlık tema; Pro ile yapay zekâ, OCR ve dönüştürme — hesap duvarı yok.",
+      feat_ai_h3: "Yapay zekâ PDF asistanı",
+      feat_ai_lead: "Sözleşmeleri, ders notlarını ve kılavuzları dosyayı telefondan çıkarmadan eyleme dönük cevaplara çevirin.",
+      feat_ai_detail_html: "<ul><li>Yüklenen PDF ile sohbet: sorular, özetler ve belge odaklı ana çıkarımlar.</li><li>Pro ile cihaz üzerinde işlem — iş, okul ve hassas taslaklarda gizlilik önemliyse güçlü argüman.</li><li>Mevcut teslim akışınıza uygun dışa aktarma ve paylaşım seçenekleriyle bitirin.</li></ul>",
+      feat_merge_h3: "Birleştir ve böl",
+      feat_merge_lead: "Faturaları, bölümleri veya ekleri tek, cilalı bir dosyada birleştirin — ya da insanların gerçekten ihtiyaç duyduğu sayfaları ayıklayın.",
+      feat_merge_detail_html: "<ul><li>Birleştirmeden önce PDF ve sayfaları sürükleyerek sıralayın; önizleme ile sürpriz çıktı riskini azaltın.</li><li>E-posta limitleri ve sürüm kontrolü için tek sayfa, aralık veya çoklu çıktı ile bölün.</li><li>Ders paketleri, işe alım setleri ve müşteriye dönük paketler için ideal.</li></ul>",
+      feat_scan_h3: "Tarayıcı ve resimden PDF",
+      feat_scan_lead: "Cebinizdeki kağıt, otomatik algılama ve hızlı düzenleme ile temiz, paylaşılabilir PDF’e dönüşür.",
+      feat_scan_detail_html: "<ul><li>Perspektif ve kenar düzenlemesi ile okunaklı tarama için kamera yakalama.</li><li>El ilanları, fişler veya tahta fotoğrafları için çoklu fotoğraf akışı — dışa aktarmadan önce sıralayın.</li><li>Mevcut JPG/PNG setlerini tek, arşiv kalitesinde PDF yapın.</li></ul>",
+      feat_compress_h3: "Sıkıştır ve koru",
+      feat_compress_lead: "Posta kutusu limitlerini ve yavaş ağları aşın; önemli sayfalarda metin netliğini koruyun.",
+      feat_compress_detail_html: "<ul><li>E-posta, mesaj uygulamaları ve yükleme portalları için ağır taramaları ve broşürleri küçültün.</li><li>Sözleşme veya kişisel kayıtları paylaşmadan önce isteğe bağlı 128 bit parola kilidi.</li><li>Sıkıştırma cihazda çalışır; daha hızlı teslim ve içiniz rahat.</li></ul>",
+      feat_ocr_h3: "OCR",
+      feat_ocr_lead: "Düz taramaları aranabilir ve kopyalanabilir yapın; alıntı, dipnot ve arşiv düzgün olsun.",
+      feat_ocr_detail_html: "<ul><li>Karma düzenler ve zorlu fotoğraflar için ayarlı metin tanıma.</li><li>İşlem yerelde kalır — NDA ve özel arşivler için güçlü mesaj.</li><li>Metin açıldıktan sonra mevcut dışa aktarma akışınızla uyumlu.</li></ul>",
+      feat_conv_h3: "Dönüştürücü",
+      feat_conv_lead: "İş arkadaşları Word isterse veya sunum ve sosyal için keskin görüntü gerekiyorsa formatları köprüleyin.",
+      feat_conv_detail_html: "<ul><li>Başka yerde düzenleme, yorum veya izleme değişikliği gerektiğinde PDF’ten DOCX.</li><li>Sunumlar, ekler ve tasarım teslimleri için PDF’ten PNG/JPG.</li><li>Büyük partiler Pro kapsamında öngörülebilir hızla.</li></ul>",
+      feat_rotate_h3: "Döndür ve filigran",
+      feat_rotate_lead: "Yan dönük taramaları ve teslim öncesi markalamayı cihazdan çıkmadan düzeltin.",
+      feat_rotate_detail_html: "<ul><li>İçe aktardıktan hemen sonra tek sayfa veya tüm seti döndürün — masaüstü şart değil.</li><li>Taslak, gizli, müşteri kodu gibi okunabilir metin filigranlarıyla hesap verebilirlik.</li><li>Onay, başvuru ve iç inceleme döngüleri için son cilâ.</li></ul>",
+      note_html: "Kampanyada net vaat: <strong>ücretsiz temel araçlar çevrimdışı</strong>, isteğe bağlı <strong>Pro</strong> ile yapay zekâ, OCR, sınırsız kullanım, reklamsız deneyim, dönüştürücü ve öncelikli işleme. Tek seferlik satın alma yalnızca reklamları kaldırabilir (yapay zekâ ve OCR için Pro gerekir). Mağaza metninizi ve yerel reklam kurallarını her zaman eşleştirin.",
+      gallery_h2: "Ekran görüntüleri",
+      gallery_p: "Her gün kullanacağınız akışlara hızlı bir bakış.",
+      gallery_img_alt: "PDF araçlarını öne çıkaran uygulama vitrini",
+      gallery_caption: "Araçlara genel bakış — hepsi tek yerde.",
+      why_h2: "Neden PDF Manager",
+      why_p: "Gerçek dosyalar ve gerçek son teslim tarihleri için — şişirilmiş başka bir düzenleyici değil.",
+      why_offline_html: "<strong>Önce çevrimdışı</strong> PDF’leriniz cihazda işlenir. Temel araçlar için zorunlu bulut yüklemesi yoktur.",
+      why_privacy_html: "<strong>Gizlilik</strong> Kayıt duvarı yok — uygulamayı açın ve işe koyulun.",
+      why_speed_html: "<strong>Hız</strong> Birkaç dokunuşla birleştirin, sıkıştırın ve paylaşın.",
+      why_lang_html: "<strong>Çok dilli</strong> İngilizce, Türkçe, Almanca, Fransızca, İspanyolca, Arapça ve daha fazlası.",
+      cta_h2: "PDF Manager’ı Android’e alın",
+      cta_p: "Google Play’den yükleyin — güncellemeler ve yorumlar orada.",
+      cta_btn: "Google Play’de aç",
+      footer_copy: "© 2026 PDF Manager",
+      footer_play: "Google Play sayfası",
+      footer_privacy: "Gizlilik politikası",
+      footer_terms: "Kullanım koşulları",
+      footer_legal: "Android, Google LLC’nin ticari markasıdır. Google Play ve Google Play logosu, Google LLC’nin ticari markalarıdır.",
+      doc_title: "PDF Manager — Android için çevrimdışı PDF araçları",
+      meta_desc: "PDF Manager Android: birleştir, böl, tara, sıkıştır, koru; Pro’da yapay zekâ, OCR, dönüştürücü. Çevrimdışı öncelik, hesap yok — reklam metnine uygun özellik özeti.",
+      og_title: "PDF Manager — Android için çevrimdışı PDF araçları",
+      og_desc: "Detaylı özellik dökümü: çevrimdışı PDF seti, Pro ile yapay zekâ ve OCR. Gizlilik odaklı kullanıcı ve performans kampanyaları için."
+    },
+    de: {
+      skip: "Zum Inhalt springen",
+      nav_home_aria: "PDF Manager Startseite",
+      nav_sections_aria: "Seitenabschnitte",
+      nav_features: "Funktionen",
+      nav_screenshots: "Screenshots",
+      nav_why: "Warum wir",
+      lang_label: "Sprache",
+      play_small: "Jetzt bei",
+      play_strong: "Google Play",
+      hero_kicker: "Android · Offline zuerst",
+      hero_h1_a: "PDF-Tools bleiben",
+      hero_h1_b: "auf Ihrem Telefon.",
+      hero_lead: "Zusammenführen, teilen, scannen, komprimieren, schützen und mehr — ohne Ihre Dateien in die Cloud zu laden. Pro ergänzt einen KI-Assistenten, OCR und den vollen Konverter — auf dem Gerät.",
+      btn_download: "Für Android herunterladen",
+      btn_see_app: "App ansehen",
+      pill_account: "Kein Konto nötig",
+      pill_free: "Kernfunktionen kostenlos",
+      pill_langs: "6 Sprachen",
+      hero_img_alt: "PDF Manager: Zusammenführen, Teilen, Scannen, Komprimieren und KI in einer App",
+      features_h2: "Ein vollständiges PDF-Set für Werbetexte und Kampagnen",
+      features_p: "Bezahlte Ads, Social Posts oder eine schlanke Landingpage: Nutzer merken sofort Offline-Geschwindigkeit, klare Oberfläche, Dunkelmodus; Pro ergänzt KI, OCR und Konvertierung — ohne Konto-Zwang.",
+      feat_ai_h3: "KI-PDF-Assistent",
+      feat_ai_lead: "Verträge, Skripte und Handbücher werden zu nutzbaren Antworten — ohne Dateien vom Telefon in die Cloud zu schicken.",
+      feat_ai_detail_html: "<ul><li>Mit geladenem PDF chatten: Fragen, Zusammenfassungen, Kernpunkte für echte Dokumente.</li><li>Mit Pro auf dem Gerät — starkes Argument, wenn Vertraulichkeit zählt (Job, Uni, sensible Entwürfe).</li><li>Export und Teilen passend zu Ihrem bestehenden Workflow.</li></ul>",
+      feat_merge_h3: "Zusammenführen & teilen",
+      feat_merge_lead: "Rechnungen, Kapitel oder Anhänge zu einer sauberen Datei vereinen — oder nur die Seiten extrahieren, die wirklich gebraucht werden.",
+      feat_merge_detail_html: "<ul><li>PDFs und Seiten per Drag sortieren, vor dem Zusammenführen Vorschau — keine Überraschungen beim Versand.</li><li>Teilen nach einzelnen Seiten, Bereichen oder mehreren Ausgaben für Mail-Limits und Versionierung.</li><li>Ideal für Skripte, Onboarding-Pakete und kundenfertige Bündel.</li></ul>",
+      feat_scan_h3: "Scanner & Bild zu PDF",
+      feat_scan_lead: "Papier in der Tasche wird zu sauberen, teilbaren PDFs mit Erkennung und schneller Nachbearbeitung.",
+      feat_scan_detail_html: "<ul><li>Kameraaufnahme mit Perspektive und Kantenbereinigung für lesbare Scans.</li><li>Mehrfoto-Flows für Merkzettel, Belege oder Whiteboards — vor dem Export sortieren.</li><li>Bestehende JPG/PNG-Serien zu einem archivtauglichen PDF bündeln.</li></ul>",
+      feat_compress_h3: "Komprimieren & schützen",
+      feat_compress_lead: "Mailbox-Limits und langsame Netze meistern und dabei wichtige Texte lesbar halten.",
+      feat_compress_detail_html: "<ul><li>Schwere Scans und Broschüren für E-Mail, Chat und Upload-Portale verkleinern.</li><li>Optional 128-Bit-Passwort vor dem Teilen von Verträgen oder persönlichen Unterlagen.</li><li>Komprimierung auf dem Gerät — schneller fertig, mehr Ruhe.</li></ul>",
+      feat_ocr_h3: "OCR",
+      feat_ocr_lead: "Flache Scans durchsuchbar und kopierbar machen — zitieren, zitieren lassen, archivieren.",
+      feat_ocr_detail_html: "<ul><li>Texterkennung für gemischte Layouts und schwierige Fotos, wenn es darauf ankommt.</li><li>Verarbeitung bleibt lokal — passt zu NDAs und privaten Archiven.</li><li>Nach dem Freischalten des Textes mit Ihrem Export-Flow kombinierbar.</li></ul>",
+      feat_conv_h3: "Konverter",
+      feat_conv_lead: "Formate überbrücken, wenn andere Word brauchen oder Sie Bilder für Decks und Social benötigen.",
+      feat_conv_detail_html: "<ul><li>PDF zu DOCX, wenn woanders Bearbeitung, Kommentare oder Änderungsverfolgung nötig ist.</li><li>PDF zu PNG/JPG für Folien, Anhänge und kreative Übergaben.</li><li>Große Stückzahlen mit Pro planbar durchsatzstark.</li></ul>",
+      feat_rotate_h3: "Drehen & Wasserzeichen",
+      feat_rotate_lead: "Verdrehte Scans und Markierung vor dem Versand direkt auf dem Gerät korrigieren.",
+      feat_rotate_detail_html: "<ul><li>Einzelne Seiten oder ganze Sets direkt nach dem Import drehen — kein Desktop nötig.</li><li>Lesbare Text-Wasserzeichen (Entwurf, vertraulich, Kunden-Code) für Nachvollziehbarkeit.</li><li>Feinschliff für Freigaben, Einreichungen und interne Review-Runden.</li></ul>",
+      note_html: "Klare Kampagnenbotschaft: <strong>kostenlose Kernfunktionen offline</strong>, optional <strong>Pro</strong> für KI, OCR, unbegrenzte Nutzung, keine Werbung, Konverter und Priorität. Einmaliger Kauf kann nur Werbung entfernen (KI und OCR bleiben Pro). Store-Text und lokale Werberegeln immer abstimmen.",
+      gallery_h2: "Screenshots",
+      gallery_p: "Ein schneller Blick auf Ihre täglichen Abläufe.",
+      gallery_img_alt: "App-Übersicht mit PDF-Werkzeugen",
+      gallery_caption: "Werkzeugübersicht — alles an einem Ort.",
+      why_h2: "Warum PDF Manager",
+      why_p: "Für echte Dateien und echte Deadlines — kein weiterer überladener Editor.",
+      why_offline_html: "<strong>Offline zuerst</strong> PDFs werden auf dem Gerät verarbeitet. Kein erzwungener Cloud-Upload für Kernfunktionen.",
+      why_privacy_html: "<strong>Datenschutz</strong> Keine Registrierungspflicht — App öffnen und loslegen.",
+      why_speed_html: "<strong>Geschwindigkeit</strong> In wenigen Tipps zusammenführen, komprimieren und teilen.",
+      why_lang_html: "<strong>Mehrsprachig</strong> Englisch, Türkisch, Deutsch, Französisch, Spanisch, Arabisch und mehr.",
+      cta_h2: "PDF Manager für Android",
+      cta_p: "Über Google Play installieren — Updates und Bewertungen dort.",
+      cta_btn: "In Google Play öffnen",
+      footer_copy: "© 2026 PDF Manager",
+      footer_play: "Google Play-Eintrag",
+      footer_privacy: "Datenschutzerklärung",
+      footer_terms: "Nutzungsbedingungen",
+      footer_legal: "Android ist eine Marke von Google LLC. Google Play und das Google Play-Logo sind Marken von Google LLC.",
+      doc_title: "PDF Manager — Offline-PDF-Toolkit für Android",
+      meta_desc: "PDF Manager für Android: zusammenführen, teilen, scannen, komprimieren, schützen; Pro mit KI, OCR, Konverter. Offline-first, kein Konto — Feature-Story für Ads und Store.",
+      og_title: "PDF Manager — Offline-PDF-Tools für Android",
+      og_desc: "Ausführliche Funktionen: Offline-PDF-Toolkit plus Pro-KI, OCR und Konvertierung. Für datenschutzbewusste Nutzer und Performance-Kampagnen."
+    },
+    fr: {
+      skip: "Aller au contenu",
+      nav_home_aria: "Accueil PDF Manager",
+      nav_sections_aria: "Sections de la page",
+      nav_features: "Fonctionnalités",
+      nav_screenshots: "Captures d’écran",
+      nav_why: "Pourquoi nous",
+      lang_label: "Langue",
+      play_small: "Disponible sur",
+      play_strong: "Google Play",
+      hero_kicker: "Android · Hors ligne d’abord",
+      hero_h1_a: "Des outils PDF qui restent",
+      hero_h1_b: "sur votre téléphone.",
+      hero_lead: "Fusionner, diviser, scanner, compresser, protéger et plus — sans envoyer vos fichiers dans le cloud. Pro ajoute un assistant IA sur l’appareil, l’OCR et le convertisseur complet.",
+      btn_download: "Télécharger pour Android",
+      btn_see_app: "Voir l’app",
+      pill_account: "Sans compte",
+      pill_free: "Outils de base gratuits",
+      pill_langs: "6 langues",
+      hero_img_alt: "PDF Manager : fusion, division, scan, compression et IA dans une seule app",
+      features_h2: "Une suite PDF complète pour vos textes publicitaires",
+      features_p: "Annonces payantes, réseaux sociaux ou page d’atterrissage : l’utilisateur gagne tout de suite des actions hors ligne rapides, une interface claire, le mode sombre ; Pro ajoute l’IA, l’OCR et la conversion — sans mur d’inscription.",
+      feat_ai_h3: "Assistant PDF IA",
+      feat_ai_lead: "Transformez contrats, cours et manuels en réponses exploitables — sans envoyer vos fichiers hors du téléphone.",
+      feat_ai_detail_html: "<ul><li>Dialogue avec le PDF chargé : questions, résumés et points clés adaptés aux vrais documents.</li><li>Traitement sur l’appareil avec Pro lorsque la confidentialité compte (travail, école, brouillons sensibles).</li><li>Terminez par export ou partage, alignés sur votre flux de livraison habituel.</li></ul>",
+      feat_merge_h3: "Fusionner et diviser",
+      feat_merge_lead: "Fusionnez factures, chapitres ou pièces jointes en un fichier soigné — ou extrayez seulement les pages utiles.",
+      feat_merge_detail_html: "<ul><li>Réorganisez PDF et pages par glisser-déposer avant fusion ; aperçu pour éviter les mauvaises surprises.</li><li>Divisez par page, plage ou plusieurs sorties pour limites mail et suivi de versions.</li><li>Idéal pour dossiers pédagogiques, kits d’intégration et livrables clients.</li></ul>",
+      feat_scan_h3: "Scanner et image vers PDF",
+      feat_scan_lead: "Le papier dans votre poche devient des PDF propres et partageables, avec détection et retouches rapides.",
+      feat_scan_detail_html: "<ul><li>Capture caméra avec perspective et nettoyage des bords pour des scans lisibles.</li><li>Flux multi-photos pour feuilles, tickets ou tableaux — réordonnez avant export.</li><li>Rassemblez des séries JPG/PNG existantes en un PDF archivable.</li></ul>",
+      feat_compress_h3: "Compresser et protéger",
+      feat_compress_lead: "Dépassez les limites de boîte mail et les réseaux lents tout en gardant le texte net sur les pages importantes.",
+      feat_compress_detail_html: "<ul><li>Réduisez scans lourds et brochures pour e-mail, messagerie et portails de dépôt.</li><li>Verrouillage optionnel 128 bits avant partage de contrats ou dossiers personnels.</li><li>Compression locale : délais plus courts, plus de sérénité.</li></ul>",
+      feat_ocr_h3: "OCR",
+      feat_ocr_lead: "Rendez les scans « plats » recherchables et copiables pour citer, citer correctement et archiver.",
+      feat_ocr_detail_html: "<ul><li>Reconnaissance de texte adaptée aux mises en page mixtes et aux photos difficiles.</li><li>Traitement local — pertinent pour NDA et archives privées.</li><li>S’intègre à votre export une fois le texte débloqué.</li></ul>",
+      feat_conv_h3: "Convertisseur",
+      feat_conv_lead: "Reliez les formats quand l’équipe exige Word ou quand il vous faut des images nettes pour slides et réseaux.",
+      feat_conv_detail_html: "<ul><li>PDF vers DOCX quand ailleurs il faut révisions, commentaires ou suivi des modifications.</li><li>PDF vers PNG/JPG pour diapositives, annexes et livrables créatifs.</li><li>Gros volumes gérés dans Pro avec un débit prévisible.</li></ul>",
+      feat_rotate_h3: "Pivoter et filigrane",
+      feat_rotate_lead: "Corrigez les scans de travers et marquez les livrables avant qu’ils ne quittent l’appareil.",
+      feat_rotate_detail_html: "<ul><li>Pivotez pages isolées ou jeux complets juste après import — sans poste fixe.</li><li>Ajoutez filigranes texte lisibles (brouillon, confidentiel, code client) pour la traçabilité.</li><li>Finition pour validations, dossiers et boucles de relecture internes.</li></ul>",
+      note_html: "Message de campagne clair : <strong>outils de base gratuits hors ligne</strong>, <strong>Pro</strong> optionnel pour IA, OCR, usage illimité, sans pub, convertisseur et priorité. Un achat unique peut retirer seulement les pubs (l’IA et l’OCR restent Pro). Harmonisez toujours avec la fiche store et la réglementation locale des annonces.",
+      gallery_h2: "Captures d’écran",
+      gallery_p: "Un aperçu rapide des flux du quotidien.",
+      gallery_img_alt: "Vitrine de l’app mettant en avant les outils PDF",
+      gallery_caption: "Vue d’ensemble des outils — tout au même endroit.",
+      why_h2: "Pourquoi PDF Manager",
+      why_p: "Conçu pour de vrais fichiers et de vraies échéances — pas un autre éditeur surchargé.",
+      why_offline_html: "<strong>Hors ligne d’abord</strong> Vos PDF sont traités sur l’appareil. Pas d’upload cloud imposé pour les outils de base.",
+      why_privacy_html: "<strong>Confidentialité</strong> Pas de mur d’inscription — ouvrez l’app et travaillez.",
+      why_speed_html: "<strong>Rapidité</strong> Fusionnez, compressez et partagez en quelques appuis.",
+      why_lang_html: "<strong>Multilingue</strong> Anglais, turc, allemand, français, espagnol, arabe et plus.",
+      cta_h2: "PDF Manager sur Android",
+      cta_p: "Installez depuis Google Play — mises à jour et avis s’y trouvent.",
+      cta_btn: "Ouvrir dans Google Play",
+      footer_copy: "© 2026 PDF Manager",
+      footer_play: "Fiche Google Play",
+      footer_privacy: "Politique de confidentialité",
+      footer_terms: "Conditions d’utilisation",
+      footer_legal: "Android est une marque de Google LLC. Google Play et le logo Google Play sont des marques de Google LLC.",
+      doc_title: "PDF Manager — Boîte à outils PDF hors ligne pour Android",
+      meta_desc: "PDF Manager sur Android : fusion, division, scan, compression, protection ; Pro avec IA, OCR, convertisseur. Hors ligne d’abord, sans compte — argumentaire pour pubs et store.",
+      og_title: "PDF Manager — Outils PDF hors ligne pour Android",
+      og_desc: "Détail des fonctions : boîte à outils PDF hors ligne plus IA, OCR et conversion Pro. Pour utilisateurs soucieux de confidentialité et campagnes performance."
+    },
+    es: {
+      skip: "Saltar al contenido",
+      nav_home_aria: "Inicio de PDF Manager",
+      nav_sections_aria: "Secciones de la página",
+      nav_features: "Funciones",
+      nav_screenshots: "Capturas",
+      nav_why: "Por qué nosotros",
+      lang_label: "Idioma",
+      play_small: "Disponible en",
+      play_strong: "Google Play",
+      hero_kicker: "Android · Primero sin conexión",
+      hero_h1_a: "Herramientas PDF que se quedan",
+      hero_h1_b: "en tu móvil.",
+      hero_lead: "Une, divide, escanea, comprime, protege y más — sin subir tus archivos a la nube. Pro añade asistente de IA en el dispositivo, OCR y convertidor completo.",
+      btn_download: "Descargar para Android",
+      btn_see_app: "Ver la app",
+      pill_account: "Sin cuenta",
+      pill_free: "Herramientas básicas gratis",
+      pill_langs: "6 idiomas",
+      hero_img_alt: "PDF Manager: unir, dividir, escanear, comprimir e IA en una sola app",
+      features_h2: "Un kit PDF completo para copys y campañas",
+      features_p: "Anuncios de pago, redes o una landing: el usuario nota al instante acciones sin conexión rápidas, interfaz clara, modo oscuro; Pro suma IA, OCR y conversión — sin muro de registro.",
+      feat_ai_h3: "Asistente PDF con IA",
+      feat_ai_lead: "Convierte contratos, apuntes y manuales en respuestas accionables sin sacar el archivo del teléfono.",
+      feat_ai_detail_html: "<ul><li>Chatea con el PDF cargado: preguntas, resúmenes y ideas clave pensadas para documentos reales.</li><li>Procesamiento en el dispositivo con Pro cuando importa la confidencialidad (trabajo, clase, borradores delicados).</li><li>Cierra con exportar o compartir alineado a cómo ya entregas trabajo.</li></ul>",
+      feat_merge_h3: "Unir y dividir",
+      feat_merge_lead: "Une facturas, capítulos o adjuntos en un solo archivo pulido — o extrae solo las páginas que de verdad hacen falta.",
+      feat_merge_detail_html: "<ul><li>Reordena PDF y páginas arrastrando antes de fusionar; vista previa para evitar sorpresas al enviar.</li><li>Divide por página, rango o varias salidas para límites de correo y control de versiones.</li><li>Ideal para dossiers académicos, packs de onboarding y paquetes para cliente.</li></ul>",
+      feat_scan_h3: "Escáner e imagen a PDF",
+      feat_scan_lead: "El papel en el bolsillo pasa a PDF limpios y compartibles con detección y retoque rápido.",
+      feat_scan_detail_html: "<ul><li>Captura con cámara, perspectiva y limpieza de bordes para escaneos legibles.</li><li>Flujos multipágina para repartos, tickets o pizarras — reordena antes de exportar.</li><li>Agrupa JPG/PNG existentes en un PDF digno de archivo.</li></ul>",
+      feat_compress_h3: "Comprimir y proteger",
+      feat_compress_lead: "Supera límites de buzón y redes lentas manteniendo nítido el texto en las páginas clave.",
+      feat_compress_detail_html: "<ul><li>Reduce escaneos pesados y folletos para correo, chat y portales de subida.</li><li>Bloqueo opcional de 128 bits antes de compartir contratos o registros personales.</li><li>La compresión ocurre en el dispositivo: más rapidez y tranquilidad.</li></ul>",
+      feat_ocr_h3: "OCR",
+      feat_ocr_lead: "Haz que los escaneos planos sean buscables y copiables para citar, citar bien y archivar.",
+      feat_ocr_detail_html: "<ul><li>Reconocimiento de texto afinado para maquetas mixtas y fotos difíciles.</li><li>El procesamiento se queda local — encaja con NDA y archivos privados.</li><li>Encaja con tu flujo de exportación una vez liberado el texto.</li></ul>",
+      feat_conv_h3: "Convertidor",
+      feat_conv_lead: "Salta entre formatos cuando otros piden Word o necesitas imágenes nítidas para decks y redes.",
+      feat_conv_detail_html: "<ul><li>PDF a DOCX cuando hace falta editar, comentar o control de cambios en otro sitio.</li><li>PDF a PNG/JPG para diapositivos, anexos y entregas creativas.</li><li>Grandes lotes dentro de Pro con rendimiento predecible.</li></ul>",
+      feat_rotate_h3: "Rotar y marca de agua",
+      feat_rotate_lead: "Corrige escaneos torcidos y marca entregables antes de que salgan del dispositivo.",
+      feat_rotate_detail_html: "<ul><li>Rota páginas sueltas o conjuntos justo tras importar — sin escritorio.</li><li>Marca de agua de texto legible (borrador, confidencial, código de cliente) para trazabilidad.</li><li>Toque final para aprobaciones, trámites y revisiones internas.</li></ul>",
+      note_html: "Promesa de campaña clara: <strong>herramientas básicas gratis sin conexión</strong>, <strong>Pro</strong> opcional para IA, OCR, uso ilimitado, sin anuncios, convertidor y prioridad. Una compra única puede quitar solo anuncios (IA y OCR siguen siendo Pro). Alinea siempre con la ficha de Play y la normativa publicitaria local.",
+      gallery_h2: "Capturas",
+      gallery_p: "Un vistazo rápido a los flujos de cada día.",
+      gallery_img_alt: "Escaparate de la app con herramientas PDF",
+      gallery_caption: "Resumen de herramientas — todo en un solo lugar.",
+      why_h2: "Por qué PDF Manager",
+      why_p: "Pensado para archivos reales y plazos reales — no otro editor hinchado.",
+      why_offline_html: "<strong>Primero sin conexión</strong> Tus PDF se procesan en el dispositivo. Sin subida forzada a la nube en lo esencial.",
+      why_privacy_html: "<strong>Privacidad</strong> Sin muro de registro — abre la app y empieza.",
+      why_speed_html: "<strong>Velocidad</strong> Une, comprime y comparte con unos toques.",
+      why_lang_html: "<strong>Multilingüe</strong> Inglés, turco, alemán, francés, español, árabe y más.",
+      cta_h2: "PDF Manager en Android",
+      cta_p: "Instálala desde Google Play — actualizaciones y reseñas allí.",
+      cta_btn: "Abrir en Google Play",
+      footer_copy: "© 2026 PDF Manager",
+      footer_play: "Ficha en Google Play",
+      footer_privacy: "Política de privacidad",
+      footer_terms: "Términos de uso",
+      footer_legal: "Android es una marca comercial de Google LLC. Google Play y el logotipo de Google Play son marcas de Google LLC.",
+      doc_title: "PDF Manager — Kit PDF sin conexión para Android",
+      meta_desc: "PDF Manager en Android: unir, dividir, escanear, comprimir, proteger; Pro con IA, OCR, convertidor. Sin conexión primero, sin cuenta — texto de funciones para anuncios.",
+      og_title: "PDF Manager — Herramientas PDF sin conexión para Android",
+      og_desc: "Desglose detallado: kit PDF sin conexión más IA, OCR y conversión Pro. Para usuarios exigentes con privacidad y campañas de rendimiento."
+    },
+    ar: {
+      skip: "تخطي إلى المحتوى",
+      nav_home_aria: "الصفحة الرئيسية لـ PDF Manager",
+      nav_sections_aria: "أقسام الصفحة",
+      nav_features: "الميزات",
+      nav_screenshots: "لقطات الشاشة",
+      nav_why: "لماذا نحن",
+      lang_label: "اللغة",
+      play_small: "متوفر على",
+      play_strong: "Google Play",
+      hero_kicker: "أندرويد · دون اتصال أولاً",
+      hero_h1_a: "أدوات PDF تبقى",
+      hero_h1_b: "على هاتفك.",
+      hero_lead: "دمج، تقسيم، مسح، ضغط، حماية وأكثر — دون رفع ملفاتك إلى السحابة. يضيف Pro مساعد ذكاء اصطناعي على الجهاز، وتعرّفًا ضوئيًا (OCR)، ومحولًا كاملًا.",
+      btn_download: "تنزيل لأندرويد",
+      btn_see_app: "شاهد التطبيق",
+      pill_account: "لا حاجة لحساب",
+      pill_free: "الأدوات الأساسية مجانية",
+      pill_langs: "6 لغات",
+      hero_img_alt: "PDF Manager: دمج وتقسيم ومسح وضغط وأدوات ذكاء اصطناعي في تطبيق واحد",
+      features_h2: "حزمة PDF كاملة لنسخ الإعلانات والحملات",
+      features_p: "إعلانات مدفوعة أو منشورات أو صفحة هبوط: المستخدم يلاحظ فورًا سرعة العمل دون اتصال، واجهة واضحة، الوضع الداكن؛ يضيف Pro الذكاء الاصطناعي والـ OCR والتحويل — دون حاجز تسجيل.",
+      feat_ai_h3: "مساعد PDF بالذكاء الاصطناعي",
+      feat_ai_lead: "حوّل العقود والمحاضرات والأدلة إلى إجابات قابلة للتنفيذ دون إخراج الملف من هاتفك.",
+      feat_ai_detail_html: "<ul><li>محادثة مع PDF محمّل: أسئلة، ملخصات، ونقاط رئيسية ملائمة للوثائق الحقيقية.</li><li>معالجة على الجهاز مع Pro عندما تهم السرية (العمل، الدراسة، مسودات حساسة).</li><li>إنهاء التدفق بالتصدير أو المشاركة بما يتوافق مع طريقة تسليمك المعتادة.</li></ul>",
+      feat_merge_h3: "دمج وتقسيم",
+      feat_merge_lead: "ادمج الفواتير والفصول أو المرفقات في ملف واحد أنيق — أو استخرج الصفحات التي يحتاجها الآخرون فعلًا.",
+      feat_merge_detail_html: "<ul><li>إعادة ترتيب ملفات PDF والصفحات بالسحب قبل الدمج؛ معاينة لتفادي مفاجآت عند الإرسال.</li><li>التقسيم حسب صفحة واحدة أو نطاقات أو عدة مخرجات لحدود البريد وإصدارات الملفات.</li><li>مثالي لحزم الدورات وملفات التأهيل وحزم العملاء.</li></ul>",
+      feat_scan_h3: "الماسح وصورة إلى PDF",
+      feat_scan_lead: "الورق في جيبك يصبح PDF نظيفًا قابلًا للمشاركة مع اكتشاف تلقائي وتنظيف سريع.",
+      feat_scan_detail_html: "<ul><li>التقاط بالكاميرا مع تصحيح المنظور والحواف لمسح مقروء.</li><li>تدفقات متعددة الصور للنشرات والإيصالات أو اللوحات — أعد الترتيب قبل التصدير.</li><li>حوّل مجموعات JPG/PNG الموجودة إلى PDF واحد بجودة أرشيفية.</li></ul>",
+      feat_compress_h3: "ضغط وحماية",
+      feat_compress_lead: "تجاوز حدود صندوق البريد والشبكات البطيئة مع الحفاظ على وضوح النص في الصفحات المهمة.",
+      feat_compress_detail_html: "<ul><li>تصغير المسح الضوئي الثقيل والكتيبات للبريد والمراسلة وبوابات الرفع.</li><li>قفل اختياري 128 بت قبل مشاركة العقود أو السجلات الشخصية.</li><li>الضغط يعمل محليًا — تسليم أسرع وراحة بال.</li></ul>",
+      feat_ocr_h3: "OCR",
+      feat_ocr_lead: "اجعل ممسوحاتك قابلة للبحث والنسخ للاقتباس والأرشفة بشكل صحيح.",
+      feat_ocr_detail_html: "<ul><li>تعرّف على النص مضبوط للتخطيطات المختلطة والصور الصعبة عند الاقتضاء.</li><li>المعالجة تبقى محلية — مناسب لاتفاقيات السرية والأرشيف الخاص.</li><li>يتكامل مع تدفق التصدير بعد فتح النص.</li></ul>",
+      feat_conv_h3: "المحوّل",
+      feat_conv_lead: "اربط الصيغ عندما يحتاج الآخرون إلى Word أو عندما تحتاج صورًا حادة للعروض والشبكات الاجتماعية.",
+      feat_conv_detail_html: "<ul><li>من PDF إلى DOCX عند الحاجة للتعديل أو التعليقات أو التتبع في مكان آخر.</li><li>من PDF إلى PNG/JPG للشرائح والملحقات والتسليمات الإبداعية.</li><li>الدفعات الكبيرة ضمن Pro بإنتاجية متوقعة.</li></ul>",
+      feat_rotate_h3: "تدوير وعلامة مائية",
+      feat_rotate_lead: "صحح المسح المائل ووسّم المخرجات قبل أن تغادر الجهاز.",
+      feat_rotate_detail_html: "<ul><li>تدوير صفحات منفصلة أو المجموعة كاملة مباشرة بعد الاستيراد — دون حاسوب مكتبي.</li><li>علامات مائية نصية مقروءة (مسودة، سري، رمز عميل) للمساءلة.</li><li>لمسة أخيرة للموافقات والتقديمات وحلقات المراجعة الداخلية.</li></ul>",
+      note_html: "وعد حملة واضح: <strong>أدوات أساسية مجانية دون اتصال</strong>، و<strong>Pro</strong> اختياري للذكاء الاصطناعي وOCR والاستخدام غير المحدود وبدون إعلانات والمحوّل والمعالجة ذات الأولوية. شراء لمرة واحدة قد يزيل الإعلانات فقط (الذكاء الاصطناعي وOCR يظلان يحتاجان Pro). طابق دائمًا نص المتجر وقواعد الإعلان المحلية.",
+      gallery_h2: "لقطات الشاشة",
+      gallery_p: "نظرة سريعة على التدفقات التي تستخدمها يوميًا.",
+      gallery_img_alt: "عرض التطبيق يبرز أدوات PDF",
+      gallery_caption: "نظرة عامة على الأدوات — كل شيء في مكان واحد.",
+      why_h2: "لماذا PDF Manager",
+      why_p: "مصمم لملفات حقيقية ومواعيد نهائية حقيقية — وليس محررًا مزدحمًا آخر.",
+      why_offline_html: "<strong>دون اتصال أولاً</strong> تُعالج ملفات PDF على الجهاز. لا رفع إجباري للسحابة للأدوات الأساسية.",
+      why_privacy_html: "<strong>الخصوصية</strong> لا حاجز تسجيل — افتح التطبيق وابدأ العمل.",
+      why_speed_html: "<strong>السرعة</strong> ادمج، اضغط، وشارك بلمسات قليلة.",
+      why_lang_html: "<strong>متعدد اللغات</strong> الإنجليزية، التركية، الألمانية، الفرنسية، الإسبانية، العربية، وأكثر.",
+      cta_h2: "احصل على PDF Manager على أندرويد",
+      cta_p: "ثبّت من Google Play — التحديثات والمراجعات هناك.",
+      cta_btn: "فتح في Google Play",
+      footer_copy: "© 2026 PDF Manager",
+      footer_play: "صفحة Google Play",
+      footer_privacy: "سياسة الخصوصية",
+      footer_terms: "شروط الاستخدام",
+      footer_legal: "Android علامة تجارية لشركة Google LLC. Google Play وشعار Google Play علامتان تجاريتان لشركة Google LLC.",
+      doc_title: "PDF Manager — أدوات PDF دون اتصال لأندرويد",
+      meta_desc: "PDF Manager على أندرويد: دمج، تقسيم، مسح، ضغط، حماية؛ Pro مع ذكاء اصطناعي وOCR ومحوّل. دون اتصال أولاً، دون حساب — نص ميزات جاهز للإعلانات.",
+      og_title: "PDF Manager — أدوات PDF دون اتصال لأندرويد",
+      og_desc: "تفصيل الميزات: مجموعة PDF دون اتصال مع Pro للذكاء الاصطناعي وOCR والتحويل. لمستخدمي الخصوصية وحملات الأداء."
+    }
+  };
+
+  var selectEl = document.getElementById("lang-select");
+  if (!selectEl) return;
+
+  var NATIVE = { en: "English", tr: "Türkçe", de: "Deutsch", fr: "Français", es: "Español", ar: "العربية" };
+
+  function initialLang() {
+    try {
+      var s = localStorage.getItem(STORAGE_KEY);
+      if (s && STR[s]) return s;
+    } catch (e) {}
+    var nav = (navigator.language || "en").toLowerCase();
+    if (nav.startsWith("ar")) return "ar";
+    var two = nav.slice(0, 2);
+    if (STR[two]) return two;
+    return "en";
+  }
+
+  function applyLang(code) {
+    if (!STR[code]) code = "en";
+    var t = STR[code];
+    document.documentElement.lang = code === "ar" ? "ar" : code;
+    document.documentElement.dir = code === "ar" ? "rtl" : "ltr";
+    try {
+      localStorage.setItem(STORAGE_KEY, code);
+    } catch (e) {}
+
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n");
+      if (key && t[key] != null) el.textContent = t[key];
+    });
+    document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-html");
+      if (key && t[key] != null) el.innerHTML = t[key];
+    });
+    document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-alt");
+      if (key && t[key] != null) el.setAttribute("alt", t[key]);
+    });
+    document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-aria");
+      if (key && t[key] != null) el.setAttribute("aria-label", t[key]);
+    });
+
+    document.title = t.doc_title || document.title;
+    var md = document.getElementById("meta-desc");
+    if (md && t.meta_desc) md.setAttribute("content", t.meta_desc);
+    var ogT = document.getElementById("meta-og-title");
+    if (ogT && t.og_title) ogT.setAttribute("content", t.og_title);
+    var ogD = document.getElementById("meta-og-desc");
+    if (ogD && t.og_desc) ogD.setAttribute("content", t.og_desc);
+    var twT = document.getElementById("meta-tw-title");
+    if (twT && t.og_title) twT.setAttribute("content", t.og_title);
+    var twD = document.getElementById("meta-tw-desc");
+    if (twD && t.og_desc) twD.setAttribute("content", t.og_desc);
+
+    selectEl.value = code;
+  }
+
+  function bindLegalLinks() {
+    var p = document.getElementById("footer-privacy-link");
+    var t = document.getElementById("footer-terms-link");
+    if (p) p.href = LEGAL_PRIVACY_URL;
+    if (t) t.href = LEGAL_TERMS_URL;
+  }
+
+  LANG_ORDER.forEach(function (code) {
+    var opt = document.createElement("option");
+    opt.value = code;
+    opt.textContent = NATIVE[code] || code;
+    selectEl.appendChild(opt);
+  });
+
+  selectEl.addEventListener("change", function () {
+    applyLang(selectEl.value);
+  });
+
+  applyLang(initialLang());
+  bindLegalLinks();
+})();
+  </script>
 </body>
 </html>
