@@ -289,7 +289,8 @@
       color: var(--brand-hover);
       margin-bottom: 0.85rem;
     }
-    .hero-kicker span {
+    .hero-kicker-dot {
+      flex-shrink: 0;
       width: 6px;
       height: 6px;
       border-radius: 50%;
@@ -650,7 +651,7 @@
     <div id="top" class="hero">
       <div class="container hero-grid">
         <div>
-          <p class="hero-kicker"><span aria-hidden="true"></span> <span data-i18n="hero_kicker">Android · Offline-first</span></p>
+          <p class="hero-kicker"><span class="hero-kicker-dot" aria-hidden="true"></span> <span data-i18n="hero_kicker">Android · Offline-first</span></p>
           <h1><span data-i18n="hero_h1_a">PDF tools that stay</span> <em data-i18n="hero_h1_b">on your phone.</em></h1>
           <p class="hero-lead" data-i18n="hero_lead">Merge, split, scan, compress, protect, and more — without uploading your files to the cloud. Pro adds an on-device AI assistant, OCR, and full converter.</p>
           <div class="hero-actions" id="download">
