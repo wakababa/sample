@@ -44,8 +44,10 @@
     }
     .hero-img {
       display: block;
-      width: 100%;
-      max-width: 1024px;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
       margin: 2rem auto 0;
       border-radius: 12px;
       border: 1px solid var(--border);
@@ -134,13 +136,31 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    figure img {
+    /* Keep phone screenshots at native aspect ratio (no stretch). */
+    figure .shot {
       width: 100%;
-      vertical-align: middle;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #080b10;
+      line-height: 0;
+    }
+    figure .shot img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: min(78vh, 920px);
+      object-fit: contain;
+      object-position: center;
       display: block;
     }
     figcaption {
+      align-self: stretch;
+      width: 100%;
       padding: 0.65rem 0.85rem;
       font-size: 0.85rem;
       color: var(--muted);
@@ -228,23 +248,33 @@
       <h2 id="gallery-heading">Screenshots</h2>
       <div class="gallery">
         <figure>
-          <img src="images/01_showcase.png" alt="App showcase highlighting PDF tools" width="1080" height="2400" loading="lazy" />
+          <div class="shot">
+            <img src="images/01_showcase.png" alt="App showcase highlighting PDF tools" width="1080" height="2400" loading="lazy" decoding="async" />
+          </div>
           <figcaption>Tools overview — everything in one place.</figcaption>
         </figure>
         <figure>
-          <img src="images/02_home.png" alt="PDF Manager home screen" width="1080" height="2400" loading="lazy" />
+          <div class="shot">
+            <img src="images/02_home.png" alt="PDF Manager home screen" width="1080" height="2400" loading="lazy" decoding="async" />
+          </div>
           <figcaption>Home — quick access to your workflows.</figcaption>
         </figure>
         <figure>
-          <img src="images/03_upload.png" alt="Selecting files to merge or process" width="1080" height="2400" loading="lazy" />
+          <div class="shot">
+            <img src="images/03_upload.png" alt="Selecting files to merge or process" width="1080" height="2400" loading="lazy" decoding="async" />
+          </div>
           <figcaption>Pick files and arrange them the way you want.</figcaption>
         </figure>
         <figure>
-          <img src="images/04_file_list.png" alt="File list in the app" width="1080" height="2400" loading="lazy" />
+          <div class="shot">
+            <img src="images/04_file_list.png" alt="File list in the app" width="1080" height="2400" loading="lazy" decoding="async" />
+          </div>
           <figcaption>Manage your documents in a clear list.</figcaption>
         </figure>
         <figure>
-          <img src="images/05_merged_result.png" alt="Merged PDF result screen" width="1080" height="2400" loading="lazy" />
+          <div class="shot">
+            <img src="images/05_merged_result.png" alt="Merged PDF result screen" width="1080" height="2400" loading="lazy" decoding="async" />
+          </div>
           <figcaption>Finish and share — merged output ready to go.</figcaption>
         </figure>
       </div>
