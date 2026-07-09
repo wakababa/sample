@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <!-- Google AdSense: site verification + ad serving -->
+  <meta name="google-adsense-account" content="ca-pub-1380297031249742" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1380297031249742" crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta id="meta-desc" name="description" content="PDF Manager — offline PDF toolkit for Android: merge, split, scan, compress, and more. Pro adds AI assistant, OCR, and converter." />
   <meta name="theme-color" content="#0a0e14" />
@@ -629,6 +632,7 @@
       <a href="#features" data-i18n="nav_features">Features</a>
       <a href="#screenshots" data-i18n="nav_screenshots">Screenshots</a>
       <a href="#why" data-i18n="nav_why">Why us</a>
+      <a href="/guides.html">Guides</a>
     </nav>
     <div class="nav-cta">
       <div class="lang-wrap">
@@ -795,8 +799,11 @@
       <div class="row">
         <span data-i18n="footer_copy">© 2026 PDF Manager</span>
         <a class="underline" href="https://play.google.com/store/apps/details?id=com.pdfmergerapp" rel="noopener noreferrer" target="_blank" data-i18n="footer_play">Google Play listing</a>
+        <a class="underline" href="/guides.html">Guides</a>
+        <a class="underline" href="/about.html">About</a>
+        <a class="underline" href="/contact.html">Contact</a>
         <!-- Legal link targets: set LEGAL_PRIVACY_URL and LEGAL_TERMS_URL in the page script (search for LEGAL_). -->
-        <a id="footer-privacy-link" class="underline" href="#" rel="noopener noreferrer" target="_blank" data-i18n="footer_privacy">Privacy policy</a>
+        <a id="footer-privacy-link" class="underline" href="/privacy-policy.html" rel="noopener noreferrer" data-i18n="footer_privacy">Privacy policy</a>
         <a id="footer-terms-link" class="underline" href="#" rel="noopener noreferrer" target="_blank" data-i18n="footer_terms">Terms of use</a>
       </div>
       <p data-i18n="footer_legal">Android is a trademark of Google LLC. Google Play and the Google Play logo are trademarks of Google LLC.</p>
@@ -812,8 +819,8 @@
 
   var STORAGE_KEY = "pdfmgr_lang";
   /** Replace with your real HTTPS URLs before production (Play Console or your site). */
-  var LEGAL_PRIVACY_URL = "https://wakababa.github.io/sample/privacy-policy.html";
-  var LEGAL_TERMS_URL = "https://www.example.com/terms";
+  var LEGAL_PRIVACY_URL = "/privacy-policy.html";
+  var LEGAL_TERMS_URL = "/terms.html";
   var LANG_ORDER = ["en", "tr", "de", "fr", "es", "ar"];
   var STR = {
     en: {
